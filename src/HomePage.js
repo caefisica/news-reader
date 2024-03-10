@@ -77,7 +77,7 @@ function HomePage({ feedsStore }) {
     loading.current = true;
     Promise.all(feedsStore.feeds.map(feed => getFeedListing(feed.url)))
       .then(responses => {
-        const allNewsData = [].concat(...responses.map(res => res.data.items));
+        const allNewsData = [].concat(...responses.map(res => res.data.channel.items));
         allNewsData.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
         setAllNews(allNewsData);
         setNews(allNewsData.slice(0, 12));

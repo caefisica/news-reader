@@ -1,4 +1,4 @@
 import axios from "axios";
-const corsUrl = "https://api.rss2json.com/v1/api.json?rss_url=";
+const corsUrl = "https://rss-to-json.cae.workers.dev/?url=";
 
 export const getFeedListing = url => axios.get(`${corsUrl}${url}`);
