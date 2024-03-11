@@ -8,32 +8,32 @@ import TopBar from './TopBar';
 import SourcesPage from './SourcesPage';
 
 const history = createBrowserHistory({
-  basename: process.env.REACT_APP_BASE_URL,
+    basename: process.env.REACT_APP_BASE_URL,
 });
 
 const App = ({ feedsStore }) => {
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      const script = document.createElement("script");
-      script.src = "https://cdn.splitbee.io/sb.js";
-      script.defer = true;
-      document.body.appendChild(script);
-    }
-  }, []);
+    useEffect(() => {
+        if (process.env.NODE_ENV === 'production') {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.splitbee.io/sb.js';
+            script.defer = true;
+            document.body.appendChild(script);
+        }
+    }, []);
 
-  return (
-    <div className='App'>
-      <Router history={history}>
-        <TopBar />
-        <Route path='/' exact>
-          <HomePage feedsStore={feedsStore} />
-        </Route>
-        <Route path='/sources' exact>
-          <SourcesPage feedsStore={feedsStore} />
-        </Route>
-      </Router>
-    </div>
-  )
+    return (
+        <div className='App'>
+            <Router history={history}>
+                <TopBar />
+                <Route path='/' exact>
+                    <HomePage feedsStore={feedsStore} />
+                </Route>
+                <Route path='/sources' exact>
+                    <SourcesPage feedsStore={feedsStore} />
+                </Route>
+            </Router>
+        </div>
+    );
 };
 
 export default App;
