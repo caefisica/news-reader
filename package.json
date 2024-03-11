@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "axios": "^1.4.0",
+    "axios": "^1.6.7",
     "bootstrap": "^5.3.0",
     "fork-ts-checker-webpack-plugin": "^6.5.3",
     "formik": "^2.4.2",
