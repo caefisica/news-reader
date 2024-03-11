@@ -1,15 +1,27 @@
 {
-  "name": "cae-rss",
+  "name": "rss-reader",
   "version": "0.9.0",
   "private": false,
+  "author": "David Duran <contacto@altmails.com> (https://totallynotdavid.github.io/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caefisica/rss-reader.git"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/totallynotdavid"
+  },
   "scripts": {
+    "setup": "shx rm -rf .git && git init -b master && npm install",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run clean:build && react-scripts build",
     "test": "react-scripts test",
+    "lint": "eslint src/",
+    "clean": "npm run clean:build && npm run clean:node_modules",
+    "clean:build": "shx rm -rf build",
+    "clean:node_modules": "shx rm -rf node_modules pnpm-lock.json",
     "eject": "react-scripts eject",
-    "prebuild": "npm run build:clean",
-    "clean": "shx rm -rf node_modules pnpm-lock.json",
-    "build:clean": "shx rm -rf build"
+    "prebuild": "npm run clean:build"
   },
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -26,7 +38,6 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^5.0.1",
-    "shx": "^0.3.4",
     "typescript": "^5.0.4",
     "yup": "^1.2.0"
   },
@@ -35,8 +46,11 @@
       "typescript": "^5"
     }
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-react": "^7.34.0",
+    "prop-types": "^15.8.1",
+    "shx": "^0.3.4"
   },
   "browserslist": {
     "production": [
@@ -49,5 +63,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
