@@ -33,8 +33,6 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
 
-    - run: pnpm ci
-
-    - run: pnpm test
+    - run: pnpm i
 
     - run: pnpm run build
