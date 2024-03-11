@@ -1,11 +1,17 @@
-import { observable, action } from "mobx";
+import { observable, action, makeObservable } from 'mobx';
 
 class FeedsStore {
-  @observable feeds = [];
+    constructor() {
+        this.feeds = [];
+        makeObservable(this, {
+            feeds: observable,
+            setFeeds: action,
+        });
+    }
 
-  @action setFeeds = (feeds) => {
-    this.feeds = feeds;
-  }
+    setFeeds = (feeds) => {
+        this.feeds = feeds;
+    };
 }
 
 const feedsStore = new FeedsStore();
