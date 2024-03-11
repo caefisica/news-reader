@@ -13,7 +13,7 @@ Esta herramienta está diseñada para ayudar a estudiantes y entusiastas de la f
 
 ## Dominio público
 
-Este proyecto se encuentra bajo la licencia Apache versión 2, lo que significa que es de código abierto y cualquier persona puede utilizarlo, modificarlo y distribuirlo libremente.
+Este proyecto se encuentra bajo la [licencia Apache versión 2](LICENSE), lo que significa que es de código abierto y cualquier persona puede utilizarlo, modificarlo y distribuirlo libremente.
 
 ## Contribución al proyecto 🤝
 
