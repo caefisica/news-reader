@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './SourcesPage.css';
 import { observer } from 'mobx-react';
 import Card from 'react-bootstrap/Card';
@@ -48,7 +49,9 @@ function SourcesPage({ feedsStore }) {
                 } else {
                     feedsStore.setFeeds(feedsStore.feeds);
                 }
-            } catch (ex) {}
+            } catch (ex) {
+                console.error(ex);
+            }
             setInitialized(true);
 
         }
@@ -66,10 +69,8 @@ function SourcesPage({ feedsStore }) {
                 {({
                     handleSubmit,
                     handleChange,
-                    handleBlur,
                     values,
                     touched,
-                    isInvalid,
                     errors,
                 }) => (
                     <Form noValidate onSubmit={handleSubmit}>
@@ -124,4 +125,17 @@ function SourcesPage({ feedsStore }) {
         </div>
     );
 }
+
+SourcesPage.propTypes = {
+    feedsStore: PropTypes.shape({
+        setFeeds: PropTypes.func.isRequired,
+        feeds: PropTypes.arrayOf(
+            PropTypes.shape({
+                name: PropTypes.string.isRequired,
+                url: PropTypes.string.isRequired,
+            })
+        ).isRequired,
+    }).isRequired,
+};
+
 export default observer(SourcesPage);

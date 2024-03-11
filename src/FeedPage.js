@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './FeedPage.css';
 import { observer } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
@@ -26,7 +27,7 @@ function ListingCard({ listing, openLink }) {
     );
 }
 
-function FeedPage({ feedsStore, location }) {
+function FeedPage({ location }) {
     const [initialized, setInitialized] = useState(false);
     const [listings, setListings] = useState([]);
     const [data, setData] = useState({});
@@ -71,5 +72,24 @@ function FeedPage({ feedsStore, location }) {
         </div>
     );
 }
+
+ListingCard.propTypes = {
+    listing: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        pubDate: PropTypes.string.isRequired,
+        source: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        content: PropTypes.string.isRequired,
+        link: PropTypes.string.isRequired,
+    }).isRequired,
+    openLink: PropTypes.func.isRequired,
+};
+
+FeedPage.propTypes = {
+    feedsStore: PropTypes.any,
+    location: PropTypes.shape({
+        search: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default withRouter(observer(FeedPage));

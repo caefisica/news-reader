@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { withRouter } from 'react-router-dom';
@@ -19,5 +20,11 @@ function TopBar({ location }) {
         </Navbar>
     );
 }
+
+TopBar.propTypes = {
+    location: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+    }).isRequired,
+};
 
 export default withRouter(TopBar);

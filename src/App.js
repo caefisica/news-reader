@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Router, Route } from 'react-router-dom';
 import { createBrowserHistory } from 'history'; 
 import HomePage from './HomePage';
@@ -34,6 +35,10 @@ const App = ({ feedsStore }) => {
             </Router>
         </div>
     );
+};
+
+App.propTypes = {
+    feedsStore: PropTypes.object.isRequired,
 };
 
 export default App;

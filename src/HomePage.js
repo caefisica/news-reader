@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -97,7 +98,7 @@ function HomePage({ feedsStore }) {
     return (
         <div className="home-page">
             <Row className="d-flex justify-content-center">
-                {news.map((item, index) => (
+                {news.map((item) => (
                     <Col xs={12} md={8} lg={6} xl={4} className="mb-4" key={`${item.pubDate}-${item.title}`}>
                         <Card className="card-animation">
                             <Card.Body>
@@ -123,11 +124,22 @@ function HomePage({ feedsStore }) {
                     </Col>
                 ))}
             </Row>
-            {isLoading && <h4>Loading more items...</h4>}
+            {isLoading && <h4>Cargando más elementos...</h4>}
             {showNotice && <div className="notice-card">¡Nuevos items han sido añadidos!</div>}
             {!isLoading && endReached && <EndPageAnimation />}
         </div>
     );
 }
+
+HomePage.propTypes = {
+    feedsStore: PropTypes.shape({
+        setFeeds: PropTypes.func.isRequired,
+        feeds: PropTypes.arrayOf(
+            PropTypes.shape({
+                url: PropTypes.string.isRequired,
+            })
+        ).isRequired,
+    }).isRequired,
+};
 
 export default observer(HomePage);
