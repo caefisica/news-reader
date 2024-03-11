@@ -1,44 +1,29 @@
-# RSS para Físicos
+<h1 align="center">RSS para físicos</h1>
 
-Este es el repositorio de una aplicación web basada en React que permite a los estudiantes de física mantenerse actualizados con las últimas noticias y avances en el campo de la física y la ciencia en general. Esta aplicación está basada en el proyecto original creado por [@hauyeung](https://bitbucket.org/hauyeung/), cuyo trabajo puede ser visualizado [aquí](https://bitbucket.org/hauyeung/react-rss-tutorial-app/src/master/).
+<p align="center"><code>rss.caefisica.com</code> es una aplicación web desarrollada por @caefisica con el objetivo de facilitar el acceso a información reciente y relevante en el campo de la física.</p>
 
-## Características principales
+| Publicación | Calidad del código | Monitoreo |
+| ----------- | ------------------ | --------- |
+| [![Cloudflare](https://img.shields.io/endpoint?url=https://cloudflare-pages-badges.cae.workers.dev/?projectName=rss)](https://dash.cloudflare.com/?to=/:account/pages/view/rss/) | [![Momobot CI](https://github.com/caefisica/rss-reader/actions/workflows/nodejs_ci.yml/badge.svg)](https://github.com/caefisica/rss-reader/actions/workflows/nodejs_ci.yml) | [![Análisis CodeQL](https://github.com/caefisica/rss-reader/actions/workflows/analisis_codeql.yml/badge.svg)](https://github.com/caefisica/rss-reader/actions/workflows/analisis_codeql.yml) |
 
-La aplicación tiene un propósito definido: facilitar el acceso a información reciente y relevante en el campo de la física a través de la lectura de feeds RSS. Sus características destacadas son:
+Esta herramienta está diseñada para ayudar a estudiantes y entusiastas de la física a mantenerse actualizados con los últimos avances y noticias tanto en ciencia en general como en diversas áreas de la física, a través de feeds de RSS.
 
-1. *Extracción y visualización de feeds RSS*: La aplicación toma las fuentes RSS proporcionadas por el usuario y las presenta en un formato fácil de leer.
-2. *Carga infinita*: El uso del scroll infinito en la página principal permite cargar continuamente más artículos a medida que el usuario se desplaza por la página.
-3. *Gestión de fuentes*: Los usuarios tienen la capacidad de añadir y eliminar sus fuentes de feeds RSS según sus preferencias.
+> [!NOTE]  
+> Esta aplicación está basada en el proyecto original creado por [@hauyeung](https://bitbucket.org/hauyeung/), cuyo trabajo puede ser visualizado [aquí](https://bitbucket.org/hauyeung/react-rss-tutorial-app/src/master/).
 
-## Guía de Instalación y Uso
+## Dominio público
 
-Para instalar y utilizar esta aplicación, siga los pasos a continuación:
+Este proyecto se encuentra bajo la licencia Apache versión 2, lo que significa que es de código abierto y cualquier persona puede utilizarlo, modificarlo y distribuirlo libremente.
 
-1. Clone el repositorio con el comando `git clone https://github.com/caefisica/rss-reader.git`
-2. Ingrese al directorio del proyecto con `cd rss-reader`
-3. Instale las dependencias necesarias con `npm i`
-4. Inicie la aplicación con `npm run start`
+## Contribución al proyecto 🤝
 
-Nota: El desarrollador utiliza `Node v14.21.3` y `npm 6.14.8`
+¡Valoramos y alentamos las contribuciones de la comunidad! Si tienes experiencia en desarrollo web con React y quieres ayudar a mejorar esta aplicación, te invitamos a contribuir a este repositorio. Para hacerlo, por favor, sigue los siguientes pasos:
 
-Las páginas principales de la aplicación son:
+1. Haz un "fork" del repositorio
+2. Crea una nueva rama en tu "fork" para tus modificaciones
+3. Realiza los cambios necesarios y pruébalos correctamente
+4. Envía un "Pull Request" detallando los cambios realizados
 
-- `HomePage`: Página principal que extrae y muestra las fuentes RSS. Se carga más contenido automáticamente al desplazarse hacia abajo.
-- `SourcesPage`: Página que permite la adición y eliminación de fuentes de feeds RSS.
+---
 
-## Errores y Problemas Conocidos
-
-Hasta el momento, no se han identificado errores o problemas específicos. Sin embargo, si se encuentra algún error durante el uso de la aplicación, se solicita reportarlo a través de la sección "Issues" de este repositorio de GitHub.
-
-## Contribución al Proyecto
-
-Se invita a otros desarrolladores a contribuir a este proyecto. Para hacerlo, por favor siga los siguientes pasos:
-
-1. Haga un "fork" del repositorio
-2. Cree una nueva rama en su "fork" para sus modificaciones
-3. Realice los cambios necesarios y pruébelos correctamente
-4. Envíe un "Pull Request" detallando los cambios realizados
-
-# Licencia
-
-Este proyecto se encuentra bajo la Licencia MIT. Para más detalles, por favor, consulte el archivo [LICENCE](LICENSE).
+Redactado por David Duran, _coordinador general del @caefisica (2022-Actualidad)_
