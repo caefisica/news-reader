@@ -44,6 +44,12 @@ module.exports = {
         'semi': [
             'error',
             'always'
-        ]
+        ],
+        'react/no-deprecated': 'off',
+    },
+    'settings': {
+        'react': {
+            'version': 'detect'
+        }
     }
 };
