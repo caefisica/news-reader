@@ -36,7 +36,7 @@
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
-    "react-router-dom": "^5.0.1",
+    "react-router-dom": "^6.23.1",
     "react-scripts": "^5.0.1",
     "typescript": "^5.4.2",
     "yup": "^1.2.0"
