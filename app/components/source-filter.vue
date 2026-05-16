@@ -5,19 +5,9 @@ interface Source {
   category: string | null;
 }
 
-const props = defineProps<{ sources: Source[] }>();
-const emit = defineEmits<{ (e: "change", ids: number[]): void }>();
+defineProps<{ sources: Source[] }>();
 
-const { isVisible, toggle, visibleIds } = useSourcePrefs();
-
-function handleToggle(id: number) {
-  toggle(id);
-  emit("change", visibleIds(props.sources.map((s) => s.id)));
-}
-
-onMounted(() => {
-  emit("change", visibleIds(props.sources.map((s) => s.id)));
-});
+const { isVisible, toggle } = useSourcePrefs();
 </script>
 
 <template>
@@ -27,7 +17,7 @@ onMounted(() => {
       :key="source.id"
       class="chip label"
       :class="{ active: isVisible(source.id) }"
-      @click="handleToggle(source.id)"
+      @click="toggle(source.id)"
     >
       {{ source.name }}
     </button>

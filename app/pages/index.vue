@@ -16,7 +16,7 @@ interface Article {
   category: string | null;
 }
 
-const { data } = await useAsyncData("feed-init", () =>
+const { data, refresh } = await useAsyncData("feed-init", () =>
   Promise.all([
     $fetch<{ sources: Source[] }>("/api/sources"),
     $fetch<{ articles: Article[] }>("/api/articles?page=1"),
@@ -26,16 +26,19 @@ const { data } = await useAsyncData("feed-init", () =>
 const sources = computed(() => data.value?.[0].sources ?? []);
 const initialArticles = computed(() => data.value?.[1].articles ?? []);
 
-const activeSourceIds = ref<number[]>(sources.value.map((s) => s.id));
+const { visibleIds } = useSourcePrefs();
+const activeSourceIds = computed(() => visibleIds(sources.value.map((s) => s.id)));
 
-function onFilterChange(ids: number[]) {
-  activeSourceIds.value = ids;
-}
+onMounted(async () => {
+  if (!data.value) {
+    await refresh();
+  }
+});
 </script>
 
 <template>
   <div class="container feed-page">
-    <SourceFilter v-if="sources.length > 0" :sources="sources" @change="onFilterChange" />
+    <SourceFilter v-if="sources.length > 0" :sources="sources" />
     <ArticleFeed :initial-articles="initialArticles" :active-source-ids="activeSourceIds" />
   </div>
 </template>
