@@ -1,6 +1,6 @@
 import type { Parser, RawItem, NormalizedArticle } from "../types";
-import { identityParser } from "./identity";
 import { blogspotParser } from "./blogspot";
+import { identityParser } from "./identity";
 import { pronabecParser } from "./pronabec";
 
 export type { RawItem, NormalizedArticle };

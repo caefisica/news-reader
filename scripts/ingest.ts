@@ -1,6 +1,6 @@
-import { getPlatformProxy } from "wrangler";
 import { processSource } from "@news-reader/feeds";
 import type { Source } from "@news-reader/feeds";
+import { getPlatformProxy } from "wrangler";
 
 interface Env {
   DB: D1Database;

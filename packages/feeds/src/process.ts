@@ -1,6 +1,6 @@
-import type { Source } from "./types";
 import { fetchFeed } from "./fetch";
 import { parseItem } from "./parsers/index";
+import type { Source } from "./types";
 
 export async function processSource(source: Source, db: D1Database): Promise<void> {
   let items;

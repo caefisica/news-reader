@@ -2,20 +2,20 @@ import type { RawItem, NormalizedArticle } from "../types";
 
 function decodeEntities(text: string): string {
   return text
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;|&#39;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+    .replaceAll(/&amp;/g, "&")
+    .replaceAll(/&lt;/g, "<")
+    .replaceAll(/&gt;/g, ">")
+    .replaceAll(/&quot;/g, '"')
+    .replaceAll(/&apos;|&#39;/g, "'")
+    .replaceAll(/&nbsp;/g, " ")
+    .replaceAll(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replaceAll(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)));
 }
 
 function stripHtml(html: string): string {
   return decodeEntities(html)
-    .replace(/<[^>]+>/g, "")
-    .replace(/\s+/g, " ")
+    .replaceAll(/<[^>]+>/g, "")
+    .replaceAll(/\s+/g, " ")
     .trim();
 }
 
