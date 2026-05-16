@@ -10,4 +10,4 @@ max_retries = 3
 [[d1_databases]]
 binding = "DB"
 database_name = "news-reader"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "80dc5943-d28a-4c4b-91dd-6bbf712bfae6"
