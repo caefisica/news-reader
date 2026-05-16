@@ -6,6 +6,7 @@
       "name": "news-reader",
       "dependencies": {
         "@iconify/vue": "^5.0.1",
+        "@news-reader/feeds": "workspace:*",
         "gsap": "^3.12.5",
         "nuxt": "^4.0.0",
         "three": "^0.184.0",
@@ -15,6 +16,27 @@
         "nitro-cloudflare-dev": "^0.2.2",
         "typescript": "^6.0.3",
         "wrangler": "^4.92.0",
+      },
+    },
+    "packages/feeds": {
+      "name": "@news-reader/feeds",
+      "version": "0.0.1",
+      "devDependencies": {
+        "@cloudflare/workers-types": "^4.20240925.0",
+      },
+    },
+    "workers/consumer": {
+      "name": "@news-reader/consumer",
+      "version": "0.0.1",
+      "dependencies": {
+        "@news-reader/feeds": "workspace:*",
+      },
+    },
+    "workers/coordinator": {
+      "name": "@news-reader/coordinator",
+      "version": "0.0.1",
+      "dependencies": {
+        "@news-reader/feeds": "workspace:*",
       },
     },
   },
@@ -238,6 +260,12 @@
     "@mapbox/node-pre-gyp": ["@mapbox/node-pre-gyp@2.0.3", "", { "dependencies": { "consola": "^3.2.3", "detect-libc": "^2.0.0", "https-proxy-agent": "^7.0.5", "node-fetch": "^2.6.7", "nopt": "^8.0.0", "semver": "^7.5.3", "tar": "^7.4.0" }, "bin": { "node-pre-gyp": "bin/node-pre-gyp" } }, "sha512-uwPAhccfFJlsfCxMYTwOdVfOz3xqyj8xYL3zJj8f0pb30tLohnnFPhLuqp4/qoEz8sNxe4SESZedcBojRefIzg=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@1.1.4", "", { "dependencies": { "@tybys/wasm-util": "^0.10.1" }, "peerDependencies": { "@emnapi/core": "^1.7.1", "@emnapi/runtime": "^1.7.1" } }, "sha512-3NQNNgA1YSlJb/kMH1ildASP9HW7/7kYnRI2szWJaofaS1hWmbGI4H+d3+22aGzXXN9IJ+n+GiFVcGipJP18ow=="],
+
+    "@news-reader/consumer": ["@news-reader/consumer@workspace:workers/consumer"],
+
+    "@news-reader/coordinator": ["@news-reader/coordinator@workspace:workers/coordinator"],
+
+    "@news-reader/feeds": ["@news-reader/feeds@workspace:packages/feeds"],
 
     "@nodelib/fs.scandir": ["@nodelib/fs.scandir@2.1.5", "", { "dependencies": { "@nodelib/fs.stat": "2.0.5", "run-parallel": "^1.1.9" } }, "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="],
 

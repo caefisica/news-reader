@@ -37,10 +37,7 @@ export default defineNuxtConfig({
 
   vite: {
     optimizeDeps: {
-      include: [
-        'gsap',
-        'gsap/ScrollTrigger',
-      ]
-    }
-  }
+      include: ["gsap", "gsap/ScrollTrigger"],
+    },
+  },
 });

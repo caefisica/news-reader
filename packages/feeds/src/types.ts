@@ -1,3 +1,11 @@
+export interface Source {
+  id: number;
+  name: string;
+  url: string;
+  parser: string | null;
+  category: string | null;
+}
+
 export interface RawItem {
   title?: string;
   link?: string;

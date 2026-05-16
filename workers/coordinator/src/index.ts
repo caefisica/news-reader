@@ -1,14 +1,12 @@
+import type { Source } from "@news-reader/feeds";
+
 export interface Env {
   DB: D1Database;
   FEED_QUEUE: Queue;
 }
 
-interface Source {
-  id: number;
-  name: string;
-  url: string;
-  parser: string | null;
-  category: string | null;
+interface QueueMessage {
+  sources: Source[];
 }
 
 const BATCH_SIZE = 40;
@@ -30,7 +28,9 @@ export default {
     if (sources.length === 0) return;
 
     const batches = chunk(sources, BATCH_SIZE);
-    await Promise.all(batches.map((batch) => env.FEED_QUEUE.send({ sources: batch })));
+    await Promise.all(
+      batches.map((batch) => env.FEED_QUEUE.send({ sources: batch } as QueueMessage)),
+    );
 
     console.log(`Dispatched ${sources.length} sources in ${batches.length} batch(es)`);
   },

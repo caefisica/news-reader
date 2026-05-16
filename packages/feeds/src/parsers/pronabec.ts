@@ -1,4 +1,4 @@
-import type { RawItem, NormalizedArticle } from "./types";
+import type { RawItem, NormalizedArticle } from "../types";
 import { identityParser } from "./identity";
 
 // gob.pe RSS feeds set the <link> to a search results page rather than

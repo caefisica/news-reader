@@ -1,4 +1,4 @@
-import type { RawItem, NormalizedArticle } from "./types";
+import type { RawItem, NormalizedArticle } from "../types";
 import { identityParser } from "./identity";
 
 // Blogger feeds wrap content in <div> boilerplate and often duplicate

@@ -84,6 +84,7 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-sm);
+  align-items: start;
 }
 
 @media (min-width: 768px) {

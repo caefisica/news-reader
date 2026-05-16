@@ -1,7 +1,19 @@
-import type { RawItem, NormalizedArticle } from "./types";
+import type { RawItem, NormalizedArticle } from "../types";
+
+function decodeEntities(text: string): string {
+  return text
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;|&#39;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+}
 
 function stripHtml(html: string): string {
-  return html
+  return decodeEntities(html)
     .replace(/<[^>]+>/g, "")
     .replace(/\s+/g, " ")
     .trim();

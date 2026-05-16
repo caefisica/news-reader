@@ -7,17 +7,23 @@
     "type": "git",
     "url": "https://github.com/caefisica/rss-reader.git"
   },
+  "workspaces": [
+    "packages/*",
+    "workers/*"
+  ],
   "type": "module",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
     "preview": "nuxt preview",
     "typecheck": "nuxt typecheck",
+    "ingest": "bun run scripts/ingest.ts",
     "migrate:local": "wrangler d1 execute news-reader --local --file migrations/0001_init.sql && wrangler d1 execute news-reader --local --file migrations/0002_seed_sources.sql",
     "migrate:remote": "wrangler d1 execute news-reader --file migrations/0001_init.sql && wrangler d1 execute news-reader --file migrations/0002_seed_sources.sql"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.1",
+    "@news-reader/feeds": "workspace:*",
     "gsap": "^3.12.5",
     "nuxt": "^4.0.0",
     "three": "^0.184.0"

@@ -1,4 +1,4 @@
-import type { RawItem } from "./parsers/index";
+import type { RawItem } from "./types";
 
 // Minimal XML → object extraction without a DOM parser dependency.
 // Handles both RSS 2.0 (<item>) and Atom 1.0 (<entry>) feeds.
@@ -17,7 +17,6 @@ function extractAttr(xml: string, tag: string, attr: string): string | undefined
 }
 
 function parseItems(xml: string): RawItem[] {
-  // Support both RSS <item> and Atom <entry>
   const itemTag = xml.includes("<entry") ? "entry" : "item";
   const itemRe = new RegExp(`<${itemTag}[\\s>]([\\s\\S]*?)<\\/${itemTag}>`, "gi");
   const items: RawItem[] = [];
@@ -28,7 +27,6 @@ function parseItems(xml: string): RawItem[] {
 
     // For Atom feeds, <link href="..."/> is self-closing
     const link = extractText(block, "link") ?? extractAttr(block, "link", "href");
-
     const guid = extractText(block, "guid") ?? extractText(block, "id") ?? link;
 
     items.push({

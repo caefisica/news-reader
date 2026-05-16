@@ -1,4 +1,4 @@
-import type { Parser, RawItem, NormalizedArticle } from "./types";
+import type { Parser, RawItem, NormalizedArticle } from "../types";
 import { identityParser } from "./identity";
 import { blogspotParser } from "./blogspot";
 import { pronabecParser } from "./pronabec";
