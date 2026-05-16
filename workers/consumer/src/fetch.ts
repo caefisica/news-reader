@@ -1,0 +1,62 @@
+import type { RawItem } from "./parsers/index";
+
+// Minimal XML → object extraction without a DOM parser dependency.
+// Handles both RSS 2.0 (<item>) and Atom 1.0 (<entry>) feeds.
+
+function extractText(xml: string, tag: string): string | undefined {
+  const re = new RegExp(
+    `<${tag}[^>]*>(?:<\\!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tag}>`,
+    "i",
+  );
+  return re.exec(xml)?.[1]?.trim();
+}
+
+function extractAttr(xml: string, tag: string, attr: string): string | undefined {
+  const re = new RegExp(`<${tag}[^>]*${attr}="([^"]*)"`, "i");
+  return re.exec(xml)?.[1]?.trim();
+}
+
+function parseItems(xml: string): RawItem[] {
+  // Support both RSS <item> and Atom <entry>
+  const itemTag = xml.includes("<entry") ? "entry" : "item";
+  const itemRe = new RegExp(`<${itemTag}[\\s>]([\\s\\S]*?)<\\/${itemTag}>`, "gi");
+  const items: RawItem[] = [];
+
+  let match: RegExpExecArray | null;
+  while ((match = itemRe.exec(xml)) !== null) {
+    const block = match[1];
+
+    // For Atom feeds, <link href="..."/> is self-closing
+    const link = extractText(block, "link") ?? extractAttr(block, "link", "href");
+
+    const guid = extractText(block, "guid") ?? extractText(block, "id") ?? link;
+
+    items.push({
+      title: extractText(block, "title"),
+      link,
+      guid,
+      pubDate: extractText(block, "pubDate"),
+      published: extractText(block, "published"),
+      updated: extractText(block, "updated"),
+      author: extractText(block, "author") ?? extractText(block, "dc:creator"),
+      description: extractText(block, "description") ?? extractText(block, "summary"),
+      content: extractText(block, "content:encoded") ?? extractText(block, "content"),
+    });
+  }
+
+  return items;
+}
+
+export async function fetchFeed(url: string): Promise<RawItem[]> {
+  const res = await fetch(url, {
+    headers: { "User-Agent": "caefisica-news-reader/1.0" },
+    signal: AbortSignal.timeout(10_000),
+  });
+
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status} for ${url}`);
+  }
+
+  const xml = await res.text();
+  return parseItems(xml);
+}
