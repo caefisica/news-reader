@@ -64,7 +64,7 @@ onMounted(() => {
 <template>
   <div class="feed">
     <div v-if="articles.length === 0 && !loading" class="empty label">
-      No hay artículos. Las fuentes se actualizan cada 15 minutos.
+      No hay artículos. Las fuentes se actualizan cada 15 min.
     </div>
 
     <div class="feed-grid">
@@ -73,9 +73,9 @@ onMounted(() => {
 
     <div ref="sentinel" class="sentinel" />
 
-    <div v-if="loading" class="loading label">Cargando…</div>
+    <div v-if="loading" class="status label">Cargando...</div>
 
-    <div v-if="!hasMore && articles.length > 0" class="end label">— fin del feed —</div>
+    <div v-if="!hasMore && articles.length > 0" class="status label">Fin del feed</div>
   </div>
 </template>
 
@@ -84,7 +84,6 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-sm);
-  align-items: start;
 }
 
 @media (min-width: 768px) {
@@ -103,8 +102,7 @@ onMounted(() => {
   height: 1px;
 }
 
-.loading,
-.end,
+.status,
 .empty {
   text-align: center;
   color: var(--color-text-muted);

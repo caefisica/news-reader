@@ -22,14 +22,15 @@
     "db:migrate:local": "wrangler d1 migrations apply news-reader --local"
   },
   "dependencies": {
-    "@iconify/vue": "^5.0.1",
     "@news-reader/feeds": "workspace:*",
+    "@nuxt/icon": "^2.2.2",
     "gsap": "^3.12.5",
-    "nuxt": "^4.0.0",
-    "three": "^0.184.0"
+    "nuxt": "^4.0.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240925.0",
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxtjs/color-mode": "^4.0.0",
     "nitro-cloudflare-dev": "^0.2.2",
     "typescript": "^6.0.3",
     "wrangler": "^4.92.0"

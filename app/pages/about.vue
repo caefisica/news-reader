@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: "Sobre nosotros",
+  title: "Acerca",
   description: "Agregador de noticias de física y ciencia para la comunidad científica peruana.",
 });
 </script>
@@ -74,11 +74,11 @@ useSeoMeta({
 
 <style scoped>
 .about-page {
-  padding-block: var(--spacing-3xl) var(--spacing-2xl);
+  padding-block: var(--spacing-4xl) var(--spacing-3xl);
 }
 
 .hero {
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-4xl);
 }
 
 .hero-title {
@@ -93,24 +93,26 @@ useSeoMeta({
   font-size: 16px;
   font-weight: 300;
   color: var(--color-text-muted);
-  max-width: 560px;
-  line-height: 24px;
+  max-width: 520px;
+  line-height: 26px;
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-4xl);
 }
 
 .about-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
   height: 100%;
 }
 
 .about-card-title {
-  color: var(--color-accent);
-  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-secondary);
 }
 
 .about-card p {
@@ -128,10 +130,18 @@ useSeoMeta({
 
 .footer-link {
   color: var(--color-text-muted);
-  transition: color var(--duration-fast);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
 }
 
-.footer-link:hover {
-  color: var(--color-text);
+@media (hover: hover) and (pointer: fine) {
+  .footer-link:hover {
+    color: var(--color-text);
+  }
+}
+
+.footer-link:active {
+  opacity: 0.5;
 }
 </style>

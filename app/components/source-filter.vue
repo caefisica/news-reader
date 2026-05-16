@@ -39,7 +39,6 @@ onMounted(() => {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
-  padding-block: var(--spacing-xl);
 }
 
 .chip {
@@ -50,19 +49,26 @@ onMounted(() => {
   color: var(--color-text-muted);
   cursor: pointer;
   transition:
-    color var(--duration-fast),
-    border-color var(--duration-fast),
-    background var(--duration-fast);
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
-.chip:hover {
-  color: var(--color-text);
-  border-color: rgba(255, 255, 255, 0.3);
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-secondary);
+  }
+}
+
+.chip:active {
+  transform: scale(0.95);
 }
 
 .chip.active {
   color: var(--color-text);
   border-color: var(--color-accent);
-  background: rgba(255, 11, 11, 0.08);
+  background: var(--color-surface-hover);
 }
 </style>

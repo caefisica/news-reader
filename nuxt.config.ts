@@ -5,7 +5,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  modules: ["nitro-cloudflare-dev"],
+  modules: ["nitro-cloudflare-dev", "@nuxt/fonts", "@nuxtjs/color-mode", "@nuxt/icon"],
 
   nitro: {
     preset: "cloudflare_module",
@@ -13,6 +13,14 @@ export default defineNuxtConfig({
       deployConfig: true,
       nodeCompat: true,
     },
+  },
+
+  colorMode: {
+    classSuffix: "",
+  },
+
+  fonts: {
+    families: [{ name: "Inter", weights: [300, 400, 500] }],
   },
 
   app: {
@@ -24,14 +32,6 @@ export default defineNuxtConfig({
         {
           name: "description",
           content: "Noticias curadas de física y ciencia para la comunidad científica peruana.",
-        },
-      ],
-      link: [
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
-        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap",
         },
       ],
     },

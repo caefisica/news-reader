@@ -1,8 +1,6 @@
 <template>
   <div>
-    <ClientOnly>
-      <LayoutWebGLBackground />
-    </ClientOnly>
+    <div class="grain-overlay" aria-hidden="true" />
     <LayoutAppHeader />
     <main>
       <slot />

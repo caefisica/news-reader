@@ -42,6 +42,9 @@ function onFilterChange(ids: number[]) {
 
 <style scoped>
 .feed-page {
-  padding-block: var(--spacing-2xl);
+  padding-block: var(--spacing-3xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xl);
 }
 </style>

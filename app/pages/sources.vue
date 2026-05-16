@@ -29,9 +29,7 @@ function formatDate(ts: number | null): string {
   <div class="container sources-page">
     <header class="page-header">
       <h1 class="page-title">Fuentes</h1>
-      <p class="page-subtitle">
-        Activa o desactiva las fuentes que aparecen en tu feed. La preferencia se guarda localmente.
-      </p>
+      <p class="page-subtitle">Tu selección se guarda en el navegador.</p>
     </header>
 
     <div class="sources-grid">
@@ -42,14 +40,13 @@ function formatDate(ts: number | null): string {
             <span v-if="source.category" class="label category-badge">{{ source.category }}</span>
           </div>
           <div class="source-meta label">
-            {{ source.article_count }} artículos · actualizado
-            {{ formatDate(source.last_fetched_at) }}
+            {{ source.article_count }} artículos · {{ formatDate(source.last_fetched_at) }}
           </div>
           <button
             class="toggle label"
             :class="{ on: isVisible(source.id) }"
-            @click="toggle(source.id)"
             :aria-label="`${isVisible(source.id) ? 'Ocultar' : 'Mostrar'} ${source.name}`"
+            @click="toggle(source.id)"
           >
             {{ isVisible(source.id) ? "Visible" : "Oculto" }}
           </button>
@@ -72,11 +69,11 @@ function formatDate(ts: number | null): string {
 
 <style scoped>
 .sources-page {
-  padding-block: var(--spacing-2xl);
+  padding-block: var(--spacing-3xl);
 }
 
 .page-header {
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-3xl);
 }
 
 .page-title {
@@ -100,8 +97,8 @@ function formatDate(ts: number | null): string {
 .source-card {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-lg) var(--spacing-xl);
+  gap: var(--spacing-md);
+  padding: var(--spacing-xl);
 }
 
 .source-info {
@@ -116,8 +113,8 @@ function formatDate(ts: number | null): string {
 }
 
 .category-badge {
-  color: var(--color-gold);
-  border: 1px solid rgba(255, 185, 21, 0.3);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
   padding: 2px var(--spacing-xs);
   border-radius: var(--radius);
 }
@@ -134,17 +131,32 @@ function formatDate(ts: number | null): string {
   background: transparent;
   color: var(--color-text-muted);
   cursor: pointer;
-  transition: all var(--duration-fast);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    background var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .toggle:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-secondary);
+  }
+}
+
+.toggle:active {
+  transform: scale(0.95);
 }
 
 .toggle.on {
-  color: var(--color-accent);
+  color: var(--color-text);
   border-color: var(--color-accent);
-  background: rgba(255, 11, 11, 0.08);
+  background: var(--color-surface-hover);
 }
 
 .suggest-footer {
-  margin-top: var(--spacing-3xl);
+  margin-top: var(--spacing-4xl);
   text-align: center;
 }
 
@@ -152,10 +164,20 @@ function formatDate(ts: number | null): string {
   color: var(--color-text-muted);
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 2px;
-  transition: color var(--duration-fast);
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
 }
 
-.suggest-link:hover {
-  color: var(--color-text);
+@media (hover: hover) and (pointer: fine) {
+  .suggest-link:hover {
+    color: var(--color-text);
+    border-color: var(--color-text);
+  }
+}
+
+.suggest-link:active {
+  opacity: 0.5;
 }
 </style>

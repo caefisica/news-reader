@@ -46,10 +46,11 @@ function formatDate(ts: number | null): string {
 
 <style scoped>
 .article-card {
-  padding: var(--spacing-lg) var(--spacing-2xl);
+  padding: var(--spacing-xl) var(--spacing-2xl);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-md);
+  height: 100%;
 }
 
 .article-meta {
@@ -59,7 +60,7 @@ function formatDate(ts: number | null): string {
 }
 
 .source-tag {
-  color: var(--color-accent);
+  color: var(--color-text-secondary);
 }
 
 .date-tag {
@@ -71,18 +72,27 @@ function formatDate(ts: number | null): string {
   font-weight: 400;
   line-height: 22px;
   color: var(--color-text);
-  transition: color var(--duration-fast);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition:
+    color var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
 }
 
-.article-title:hover {
-  color: var(--color-text-secondary);
+@media (hover: hover) and (pointer: fine) {
+  .article-title:hover {
+    color: var(--color-text-muted);
+  }
+}
+
+.article-title:active {
+  opacity: 0.5;
 }
 
 .article-excerpt {
+  flex: 1;
   color: var(--color-text-muted);
   font-size: 13px;
   line-height: 18px;
