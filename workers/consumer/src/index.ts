@@ -11,11 +11,10 @@ interface QueueMessage {
 
 export default {
   async queue(batch: MessageBatch<QueueMessage>, env: Env): Promise<void> {
-    await Promise.all(
-      batch.messages.map(async (message) => {
-        await Promise.allSettled(message.body.sources.map((s) => processSource(s, env.DB)));
-        message.ack();
-      }),
-    );
+    for (const message of batch.messages) {
+      /* eslint-disable-next-line no-await-in-loop -- sequential per-message processing prevents overwhelming D1 */
+      await Promise.allSettled(message.body.sources.map((s) => processSource(s, env.DB)));
+      message.ack();
+    }
   },
 };
