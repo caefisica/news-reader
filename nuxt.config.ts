@@ -5,6 +5,8 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  modules: ["nitro-cloudflare-dev"],
+
   nitro: {
     preset: "cloudflare-pages",
   },
@@ -32,4 +34,13 @@ export default defineNuxtConfig({
   },
 
   css: ["~/assets/css/main.css"],
+
+  vite: {
+    optimizeDeps: {
+      include: [
+        'gsap',
+        'gsap/ScrollTrigger',
+      ]
+    }
+  }
 });
