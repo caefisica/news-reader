@@ -7,7 +7,7 @@ export default defineNuxtPlugin(async () => {
 
   useRouter().afterEach(() => {
     nextTick(() => {
-      gsap.utils.toArray<HTMLElement>(".mask-text > *").forEach((el) => {
+      for (const el of gsap.utils.toArray<HTMLElement>(".mask-text > *")) {
         gsap.to(el, {
           y: 0,
           duration: 0.6,
@@ -18,7 +18,7 @@ export default defineNuxtPlugin(async () => {
             toggleActions: "play none none none",
           },
         });
-      });
+      }
     });
   });
 });
