@@ -1,11 +1,11 @@
-name = "news-reader"
+name = "news"
 compatibility_date = "2024-09-25"
 pages_build_output_dir = ".output/public"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "news-reader"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "80dc5943-d28a-4c4b-91dd-6bbf712bfae6"
 
 [[queues.producers]]
 binding = "FEED_QUEUE"
