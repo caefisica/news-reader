@@ -19,7 +19,10 @@
     "typecheck": "nuxt typecheck",
     "ingest": "bun run scripts/ingest.ts",
     "db:migrate": "wrangler d1 migrations apply news-reader --remote",
-    "db:migrate:local": "wrangler d1 migrations apply news-reader --local"
+    "db:migrate:local": "wrangler d1 migrations apply news-reader --local",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt ."
   },
   "dependencies": {
     "@news-reader/feeds": "workspace:*",
@@ -32,6 +35,8 @@
     "@nuxt/fonts": "^0.14.0",
     "@nuxtjs/color-mode": "^4.0.0",
     "nitro-cloudflare-dev": "^0.2.2",
+    "oxfmt": "^0.50.0",
+    "oxlint": "^1.65.0",
     "typescript": "^6.0.3",
     "wrangler": "^4.92.0"
   },
