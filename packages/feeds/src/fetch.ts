@@ -6,19 +6,19 @@ import type { RawItem } from "./types";
 function extractText(xml: string, tag: string): string | undefined {
   const re = new RegExp(
     `<${tag}[^>]*>(?:<\\!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tag}>`,
-    "i",
+    "iu",
   );
   return re.exec(xml)?.[1]?.trim();
 }
 
 function extractAttr(xml: string, tag: string, attr: string): string | undefined {
-  const re = new RegExp(`<${tag}[^>]*${attr}="([^"]*)"`, "i");
+  const re = new RegExp(`<${tag}[^>]*${attr}="([^"]*)"`, "iu");
   return re.exec(xml)?.[1]?.trim();
 }
 
 function parseItems(xml: string): RawItem[] {
   const itemTag = xml.includes("<entry") ? "entry" : "item";
-  const itemRe = new RegExp(`<${itemTag}[\\s>]([\\s\\S]*?)<\\/${itemTag}>`, "gi");
+  const itemRe = new RegExp(`<${itemTag}[\\s>]([\\s\\S]*?)<\\/${itemTag}>`, "giu");
   const items: RawItem[] = [];
 
   let match: RegExpExecArray | null;
